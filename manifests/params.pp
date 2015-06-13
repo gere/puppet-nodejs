@@ -35,6 +35,16 @@ class nodejs::params {
         $npm_path                  = '/usr/bin/npm'
         $repo_class                = '::nodejs::repo::nodesource'
       }
+      elsif $::operatingsystemrelease =~ /^8\.(\d+)/ {
+        $manage_package_repo       = true
+        $nodejs_debug_package_name = 'nodejs-dbg'
+        $nodejs_dev_package_name   = undef
+        $nodejs_package_name       = 'nodejs'
+        $npm_package_ensure        = 'absent'
+        $npm_package_name          = undef
+        $npm_path                  = '/usr/bin/npm'
+        $repo_class                = '::nodejs::repo::nodesource'
+      }      
       elsif $::operatingsystemrelease =~ /^10.04$/ {
         $manage_package_repo       = true
         $nodejs_debug_package_name = 'nodejs-dbg'
